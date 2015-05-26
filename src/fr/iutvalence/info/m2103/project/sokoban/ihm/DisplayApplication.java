@@ -2,7 +2,7 @@ package fr.iutvalence.info.m2103.project.sokoban.ihm;
 import javax.swing.SwingUtilities;
 
 /**
- * The application display the window of the game
+ * The application displays the window of the game
  * @author cerrutik
  *
  */
