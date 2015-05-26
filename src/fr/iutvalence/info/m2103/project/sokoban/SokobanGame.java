@@ -21,8 +21,7 @@ public class SokobanGame {
 	
 	public SokobanGame(){
 		this.map = new Map();
-		this.play();
-		
+	
 	}	
 	
 	/**
