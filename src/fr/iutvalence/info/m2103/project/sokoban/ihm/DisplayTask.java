@@ -1,9 +1,12 @@
 package fr.iutvalence.info.m2103.project.sokoban.ihm;
 
 import java.awt.GridLayout;
+
+
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 import javax.swing.JSplitPane;
 import javax.swing.BoxLayout;
@@ -18,6 +21,7 @@ public class DisplayTask implements Runnable
 	 * The main window
 	 */
 	private JFrame window;
+	private JPanel container;
 		
 	public DisplayTask() 
 	{
@@ -29,7 +33,19 @@ public class DisplayTask implements Runnable
 		this.window.setSize(800, 600);
 		this.window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		this.window.setResizable(false);
+		JSplitPane splitSuperieur = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		
+		this.container = new JPanel();
+		this.container.setLayout(new GridLayout(25,20));
+		for (int i=0; i<25;i++)
+		{
+			for (int j=0;j<20;j++)
+			{
+				this.container.add(new JLabel("x"));
+			}
+		}
+		splitSuperieur.setTopComponent(container);
+		window.getContentPane().add(splitSuperieur);
 		
 		JPanel line1 = new JPanel();
 		line1.setLayout(new BoxLayout(line1,BoxLayout.LINE_AXIS));
@@ -46,11 +62,18 @@ public class DisplayTask implements Runnable
 		Column.add(line1);
 		Column.add(line2);
 		Column.add(line3);
-		
-		window.getContentPane().add(Column);
+		splitSuperieur.setBottomComponent(Column);
+		window.getContentPane().add(splitSuperieur);
 		
 		//Makes the window visible
 		this.window.setVisible(true);
+		
+	}
+
+	@Override
+	public void run()
+	{
+		// TODO Auto-generated method stub
 		
 	}
 
